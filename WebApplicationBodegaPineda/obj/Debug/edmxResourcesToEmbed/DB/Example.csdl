@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BodegaPinedaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Deposito">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idDepositos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreProducto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RegistroPesoes" Relationship="Self.FK_RegistroPeso_Productos" FromRole="Productos" ToRole="RegistroPeso" />
+  </EntityType>
+  <EntityType Name="Proveedore">
+    <Key>
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="idProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreProveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellidoProveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="domicilio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rtn" Type="Int32" />
+    <Property Name="claveIhcafe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RegistroPesoes" Relationship="Self.FK_RegistroPeso_Proveedores" FromRole="Proveedores" ToRole="RegistroPeso" />
+  </EntityType>
+  <EntityType Name="RegistroPeso">
+    <Key>
+      <PropertyRef Name="idRegistroPeso" />
+    </Key>
+    <Property Name="idRegistroPeso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idProveedor" Type="Int32" Nullable="false" />
+    <Property Name="peso" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="descuento" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="tara" Type="Int32" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_RegistroPeso_Productos" FromRole="RegistroPeso" ToRole="Productos" />
+    <NavigationProperty Name="Proveedore" Relationship="Self.FK_RegistroPeso_Proveedores" FromRole="RegistroPeso" ToRole="Proveedores" />
+    <NavigationProperty Name="User" Relationship="Self.FK_RegistroPeso_Users" FromRole="RegistroPeso" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RegistroPesoes" Relationship="Self.FK_RegistroPeso_Users" FromRole="Users" ToRole="RegistroPeso" />
+  </EntityType>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="idCompra" />
+      <PropertyRef Name="idProductos" />
+      <PropertyRef Name="idProveedores" />
+      <PropertyRef Name="idRegistroPeso" />
+    </Key>
+    <Property Name="idCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProductos" Type="Int32" Nullable="false" />
+    <Property Name="idProveedores" Type="Int32" Nullable="false" />
+    <Property Name="idRegistroPeso" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_RegistroPeso_Productos">
+    <End Role="Productos" Type="Self.Producto" Multiplicity="1" />
+    <End Role="RegistroPeso" Type="Self.RegistroPeso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="RegistroPeso">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistroPeso_Proveedores">
+    <End Role="Proveedores" Type="Self.Proveedore" Multiplicity="1" />
+    <End Role="RegistroPeso" Type="Self.RegistroPeso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="RegistroPeso">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistroPeso_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="RegistroPeso" Type="Self.RegistroPeso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="RegistroPeso">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BodegaPinedaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Depositos" EntityType="Self.Deposito" />
+    <EntitySet Name="Productos" EntityType="Self.Producto" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedore" />
+    <EntitySet Name="RegistroPesoes" EntityType="Self.RegistroPeso" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Compras" EntityType="Self.Compra" />
+    <AssociationSet Name="FK_RegistroPeso_Productos" Association="Self.FK_RegistroPeso_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="RegistroPeso" EntitySet="RegistroPesoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistroPeso_Proveedores" Association="Self.FK_RegistroPeso_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="RegistroPeso" EntitySet="RegistroPesoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistroPeso_Users" Association="Self.FK_RegistroPeso_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RegistroPeso" EntitySet="RegistroPesoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

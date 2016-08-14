@@ -30,4 +30,6 @@ namespace WebApplicationBodegaPineda.Models
             return new ApplicationDbContext();
         }
     }
+   
+
 }
