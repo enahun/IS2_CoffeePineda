@@ -173,6 +173,7 @@
     <Compile Include="Controllers\DepositoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="DB\Compra.cs">
       <DependentUpon>Example.tt</DependentUpon>
     </Compile>
@@ -215,9 +216,12 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Proveedores.cs" />
-    <Compile Include="Models\RegistroPeso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +250,10 @@
     <Content Include="DB\Example.edmx.diagram">
       <DependentUpon>Example.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -292,16 +300,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Proveedores\Create.cshtml" />
-    <Content Include="Views\Proveedores\Delete.cshtml" />
-    <Content Include="Views\Proveedores\Details.cshtml" />
-    <Content Include="Views\Proveedores\Edit.cshtml" />
-    <Content Include="Views\Proveedores\Index.cshtml" />
     <Content Include="Views\Depositoes\Create.cshtml" />
     <Content Include="Views\Depositoes\Delete.cshtml" />
     <Content Include="Views\Depositoes\Details.cshtml" />
     <Content Include="Views\Depositoes\Edit.cshtml" />
     <Content Include="Views\Depositoes\Index.cshtml" />
+    <Content Include="Views\Proveedores\Create.cshtml" />
+    <Content Include="Views\Proveedores\Delete.cshtml" />
+    <Content Include="Views\Proveedores\Details.cshtml" />
+    <Content Include="Views\Proveedores\Edit.cshtml" />
+    <Content Include="Views\Proveedores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

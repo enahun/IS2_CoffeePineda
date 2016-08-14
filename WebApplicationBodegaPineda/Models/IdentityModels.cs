@@ -21,7 +21,7 @@ namespace WebApplicationBodegaPineda.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("bodegaPinedaV2", throwIfV1Schema: false)
+            : base("BodegaPineda", throwIfV1Schema: false)
         {
         }
 

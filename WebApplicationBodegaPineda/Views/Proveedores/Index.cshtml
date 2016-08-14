@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplicationBodegaPineda.Models.Proveedores>
+﻿@model IEnumerable<WebApplicationBodegaPineda.DB.Proveedore>
 
 @{
     ViewBag.Title = "Index";
@@ -19,13 +19,13 @@
             @Html.DisplayNameFor(model => model.apellidoProveedor)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.domicilio)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.telefono)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rtnProveedor)
+            @Html.DisplayNameFor(model => model.domicilio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rtn)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.claveIhcafe)
@@ -42,21 +42,21 @@
             @Html.DisplayFor(modelItem => item.apellidoProveedor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.domicilio)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.telefono)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.rtnProveedor)
+            @Html.DisplayFor(modelItem => item.domicilio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rtn)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.claveIhcafe)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.idProveedor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idProveedor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idProveedor })
         </td>
     </tr>
 }
