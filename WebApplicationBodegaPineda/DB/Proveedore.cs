@@ -11,7 +11,7 @@ namespace WebApplicationBodegaPineda.DB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
     public partial class Proveedore
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +21,17 @@ namespace WebApplicationBodegaPineda.DB
         }
     
         public int idProveedor { get; set; }
+        [DisplayName("Nombres")]
         public string nombreProveedor { get; set; }
+        [DisplayName("Apellidos")]
         public string apellidoProveedor { get; set; }
+        [DisplayName("Telefono")]
         public string telefono { get; set; }
+        [DisplayName("Domicilio")]
         public string domicilio { get; set; }
+        [DisplayName("RTN")]
         public Nullable<int> rtn { get; set; }
+        [DisplayName("Clave IHCAFE")]
         public string claveIhcafe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

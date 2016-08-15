@@ -300,11 +300,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Depositoes\Create.cshtml" />
-    <Content Include="Views\Depositoes\Delete.cshtml" />
-    <Content Include="Views\Depositoes\Details.cshtml" />
-    <Content Include="Views\Depositoes\Edit.cshtml" />
-    <Content Include="Views\Depositoes\Index.cshtml" />
     <Content Include="Views\Proveedores\Create.cshtml" />
     <Content Include="Views\Proveedores\Delete.cshtml" />
     <Content Include="Views\Proveedores\Details.cshtml" />
